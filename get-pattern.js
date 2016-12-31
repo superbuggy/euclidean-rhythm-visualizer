@@ -1,5 +1,5 @@
 //from https://github.com/mkontogiannis/euclidean-rhythms/blob/master/src/index.js
-draw
+
 function getPattern(pulses, steps) {
   if (pulses < 0 || steps < 0 || steps < pulses) {
     return [];
