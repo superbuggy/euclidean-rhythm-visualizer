@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <title>Euclidean Rhythm Visualizer</title>
-    <script src="get-pattern.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <header>
-      <form>
-        <h3>Euclidean Rhythm Parms</h3>
-        <input type="text" placeholder="Pulses">
-        <input type="text" placeholder="Steps">
-      </form>
-    </header>
-    <main>
-
-    </main>
-
-  </body>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>Euclidean Rhythm Visualizer</title>
+  <script src="get-pattern.js" charset="utf-8"></script>
+  <script src="https://tonejs.github.io/CDN/latest/Tone.min.js" charset="utf-8"></script>
+  <script src="play.js" charset="utf-8"></script>
+  <script src="script.js" charset="utf-8"></script>
+</head>
+<body>
+  <form id="er-params">
+    <h3>Euclidean Rhythm Params</h3>
+    <label for="pulses">Pulses</label>
+    <label for="steps">Steps</label>
+    <input id="pulses" autofocus name='pulses' type="number" placeholder="Pulses">
+    <input id="steps" name='steps' type="number" placeholder="Steps">
+    <input style="display: none;" type="submit"></input>
+  </form>
+  <button type="button" id="clear">Clear</button>
+  <header>
+  </header>
+  <main></main>
+</body>
 </html>
