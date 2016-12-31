@@ -4,20 +4,20 @@ main, form {
   text-align: center;
 }
 
-main{
+main {
   border: 1px solid black;
   min-height: 300px;
 }
 
-.on{
+.on {
   background-color: yellow;
 }
 
-.off{
+.off {
   background-color: darkred;
 }
 
-.beat{
+.beat {
   display: inline-block;
   width: 40px;
   min-height: 40px;

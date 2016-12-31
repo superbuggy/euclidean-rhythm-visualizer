@@ -1,6 +1,3 @@
-// var loop = new Tone.Loop(function(time){
-//     synth.triggerAttackRelease("C2", "8n", time);
-// }, "4n");
 function playSequence(sequence){
 
   let seqLeng = sequence.length
@@ -17,7 +14,7 @@ function playSequence(sequence){
     }
     // console.log(note, time, total-time);
     if (note){
-      noiseSynth.triggerAttackRelease("1n", time);
+      noiseSynth.triggerAttackRelease("16n", time);
     }
   }, sequence, "8n");
   seq.start(0);

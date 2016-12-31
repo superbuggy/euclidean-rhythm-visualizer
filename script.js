@@ -13,7 +13,7 @@ function drawDivs(evt){
   evt.preventDefault();
   let pulses = pulsesInput.value;
   let steps = stepsInput.value;
-  let pattern = getPattern(pulses, steps);
+  let pattern = generatePattern(pulses, steps);
   for (var i = 0; i < pattern.length; i++) {
     let div = document.createElement('div');
     div.className="beat";
@@ -25,6 +25,21 @@ function drawDivs(evt){
     main.appendChild(div);
   }
   playSequence(pattern);
+  console.log(getSequence());
+}
+
+function getSequence(){
+  let sequence = [];
+  let els = document.getElementsByClassName('beat');
+  console.log(els);
+  for (var i = 0; i < els.length; i++) {
+    if (els[i].classList.contains("on")){
+      sequence.push(1)
+    } else {
+      sequence.push(0)
+    }
+  }
+  return sequence;
 }
 
 function clearPattern(){

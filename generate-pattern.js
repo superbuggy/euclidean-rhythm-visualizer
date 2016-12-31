@@ -1,5 +1,5 @@
 //from https://gist.github.com/withakay/1286731
-function getPattern(pulses, steps) {
+function generatePattern(pulses, steps) {
 
   steps = Math.round(steps);
   pulses = Math.round(pulses);
