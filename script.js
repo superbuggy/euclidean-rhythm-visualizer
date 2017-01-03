@@ -7,8 +7,8 @@ window.onload = function(){
   main = document.getElementsByTagName("main")[0]
   form.addEventListener("submit", evt => drawDivs(evt))
   clearButton.addEventListener("click", clearPattern)
-
 }
+
 function drawDivs(evt){
   evt.preventDefault();
   let pulses = pulsesInput.value;
@@ -24,8 +24,7 @@ function drawDivs(evt){
     }
     main.appendChild(div);
   }
-  playSequence(pattern);
-  console.log(getSequence());
+  playSequence();
 }
 
 function getSequence(){

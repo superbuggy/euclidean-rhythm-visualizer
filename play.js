@@ -1,22 +1,23 @@
-function playSequence(sequence){
-
+function playSequence(){
+  let sequence = getSequence();
   let seqLeng = sequence.length
 
   let noiseSynth = new Tone.NoiseSynth().toMaster();
 
-  let total = 0;
   var seq = new Tone.Sequence(function(time, note){
-    if (total){
-      total += time;
-
-    } else {
-      total += time;
-    }
-    // console.log(note, time, total-time);
+    // console.log(note, time);
     if (note){
-      noiseSynth.triggerAttackRelease("16n", time);
+      noiseSynth.triggerAttackRelease("8n", time);
     }
   }, sequence, "8n");
-  seq.start(0);
+  console.log(sequence);
+  console.log(Tone.Transport);
+  console.log(Tone.hackyEventId);
+  Tone.hackyEventId = Tone.Transport.schedule(function(time){
+      //invoked when the Transport starts
+      Tone.Transport.clear(Tone.hackyEventId);
+      seq.stop()
+      seq.start(0);
+  }, 0);
   Tone.Transport.start();
 }
