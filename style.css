@@ -9,11 +9,10 @@ main, section, header {
   font-family: Nova Mono;
   font-size: 4vmin;
 }
-
 h1 {
-  text-align: center;
-  font-size: 16vmin;
   font-family: Nova Mono;
+  font-size: 16vmin;
+  text-align: center;
 }
 
 h3 {
@@ -24,6 +23,10 @@ h3 {
 main {
   display: flex;
   flex-wrap: wrap;
+}
+
+button {
+  font-size: 6vmin;
 }
 
 input {

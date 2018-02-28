@@ -20,7 +20,7 @@ volumeSlider.addEventListener('input', e => {
 })
 
 bpmSlider.addEventListener('input', e => {
-  console.log(e.target.value, Tone.Transport.bpm)
+  document.querySelector('label[for="bpm"] > span').innerHTML = e.target.value
   Tone.Transport.bpm.value = e.target.value
 })
 
@@ -64,6 +64,7 @@ function drawDivs (event) {
     div.className = beat ? 'on beat' : 'off beat'
     main.appendChild(div)
   })
+  // if (Tone.Transport.state === 'running')
   playSequence()
 }
 
