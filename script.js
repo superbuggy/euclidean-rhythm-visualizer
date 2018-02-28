@@ -3,6 +3,8 @@ const pulsesInput = document.getElementById('pulses')
 const stepsInput = document.getElementById('steps')
 const pixelsInput = document.getElementById('pixels')
 
+let currentSequence
+
 stepsInput.addEventListener('input', handleInput)
 pulsesInput.addEventListener('input', handleInput)
 pixelsInput.addEventListener('input', event => generateStyleSheet(event.target.value))
@@ -10,7 +12,7 @@ pixelsInput.addEventListener('input', event => generateStyleSheet(event.target.v
 generateStyleSheet()
 drawDivs()
 
-function generateStyleSheet (pixels = 48) {
+function generateStyleSheet (pixels) {
   const styleTag = document.querySelector('style')
   if (styleTag) document.head.removeChild(styleTag)
   const sheet = document.createElement('style')
@@ -18,7 +20,7 @@ function generateStyleSheet (pixels = 48) {
   document.head.appendChild(sheet)
 }
 
-function makeRule (pixels) {
+function makeRule (pixels = 48) {
   return `
   .beat {
     min-width: ${pixels}px;
@@ -32,7 +34,6 @@ function makeRule (pixels) {
 }
 
 function handleInput (event) {
-  console.log(pixelsInput.value.constructor, stepsInput.value.constructor)
   if (parseInt(pixelsInput.value) < 10) pixelsInput.value = 10
   if (parseInt(stepsInput.value) < parseInt(pulsesInput.value)) stepsInput.value = pulsesInput.value
   drawDivs(event)
@@ -58,23 +59,25 @@ function getSequenceFromDOM () {
 }
 
 function playSequence () {
-  let sequence = getSequenceFromDOM()
-  let noiseSynth = new Tone.NoiseSynth().toMaster()
+  console.log('play')
+  Tone.Transport.stop()
+  if (currentSequence) {
+    currentSequence.stop()
+    currentSequence.dispose()
+  }
 
-  var seq = new Tone.Sequence(function (time, note) {
-    // console.log(note, time)
+  let pulses = pulsesInput.value
+  let steps = stepsInput.value
+  let pattern = generatePattern(pulses, steps)
+
+  currentSequence = new Tone.Sequence(function (time, note) {
+    let noiseSynth = new Tone.NoiseSynth().toMaster()
+    console.log(note)
     if (note) {
       noiseSynth.triggerAttackRelease('8n', time)
     }
-  }, sequence, '8n')
-  console.log(sequence)
-  console.log(Tone.Transport)
-  console.log(Tone.hackyEventId)
-  Tone.hackyEventId = Tone.Transport.schedule(function (time) {
-      // invoked when the Transport starts
-    Tone.Transport.clear(Tone.hackyEventId)
-    seq.stop()
-    seq.start(0)
-  }, 0)
+  }, pattern, '8n')
+
+  currentSequence.start(0)
   Tone.Transport.start()
 }
