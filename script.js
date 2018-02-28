@@ -49,12 +49,18 @@ function makeRule (pixels = 48) {
 }
 
 function handleInput (event) {
-  if (parseInt(pixelsInput.value) < 10) pixelsInput.value = 10
-  if (parseInt(stepsInput.value) < parseInt(pulsesInput.value)) stepsInput.value = pulsesInput.value
-  drawDivs(event)
+  const MAX = 512
+  const MIN = 10
+  if (parseInt(pixelsInput.value) < MIN) pixelsInput.value = MIN
+  if (parseInt(stepsInput.value) > MAX) stepsInput.value = MAX
+  if (parseInt(pulsesInput.value) > MAX) pulsesInput.value = MAX
+  if (parseInt(stepsInput.value) < 1) stepsInput.value = 1
+  if (parseInt(pulsesInput.value) < 1) pulsesInput.value = 1
+  playSequence()
+  drawDivs()
 }
 
-function drawDivs (event) {
+function drawDivs () {
   main.innerHTML = ''
   let pulses = pulsesInput.value
   let steps = stepsInput.value
@@ -64,8 +70,6 @@ function drawDivs (event) {
     div.className = beat ? 'on beat' : 'off beat'
     main.appendChild(div)
   })
-  // if (Tone.Transport.state === 'running')
-  playSequence()
 }
 
 function getSequenceFromDOM () {
@@ -75,7 +79,6 @@ function getSequenceFromDOM () {
 }
 
 function playSequence () {
-  console.log('play')
   if (currentSequence) {
     currentSequence.stop()
     currentSequence.dispose()
@@ -85,16 +88,20 @@ function playSequence () {
   let steps = stepsInput.value
   let pattern = generatePattern(pulses, steps)
 
+  generateToneSequence(pattern)
+  currentSequence.start(0)
+  Tone.Transport.start()
+}
+
+function generateToneSequence (pattern) {
   currentSequence = new Tone.Sequence(function (time, note) {
-    const index = (currentSequence.progress * currentSequence.length)
+    const index = parseInt(currentSequence.progress * currentSequence.length)
     lightUp(index)
     let noiseSynth = new Tone.NoiseSynth().toMaster()
     if (note) {
       noiseSynth.triggerAttackRelease('8n', time)
     }
   }, pattern, '8n')
-  currentSequence.start(0)
-  Tone.Transport.start()
 }
 
 function stopSequence () {
