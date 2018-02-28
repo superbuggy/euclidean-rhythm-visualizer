@@ -1,25 +1,50 @@
-main, form {
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+body {
+  margin: 0;
+  padding: 0;
+}
+main, section, header {
   margin: auto;
   width: 70%;
+  font-family: Nova Mono;
+  font-size: 4vmin;
+}
+
+h1 {
   text-align: center;
+  font-size: 16vmin;
+  font-family: Nova Mono;
+}
+
+h3 {
+  font-size: 6vmin;
+  font-family: Nova Mono;
 }
 
 main {
-  border: 1px solid black;
-  min-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+input {
+  font-family: Nova Mono;
+  font-size: 4vmin;
+  max-width: 3em;
 }
 
 .on {
-  background-color: yellow;
+  background-color: rgb(250, 230, 0);
 }
 
 .off {
-  background-color: darkred;
+  background-color: rgb(131, 121, 61);
 }
 
-.beat {
-  display: inline-block;
-  width: 40px;
-  min-height: 40px;
-  border: 4px solid black;
-}
+/* .beat {
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgb(174, 164, 109);
+} */

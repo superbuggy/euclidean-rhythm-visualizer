@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="style.css">
   <meta charset="utf-8">
-  <title>Euclidean Rhythm Visualizer</title>
+  <title> ◬🥁👁 </title>
+  <script src="https://tonejs.github.io/build/Tone.min.js" charset="utf-8"></script>
   <script src="generate-pattern.js" charset="utf-8"></script>
-  <script src="https://tonejs.github.io/CDN/latest/Tone.min.js" charset="utf-8"></script>
-  <script src="play.js" charset="utf-8"></script>
-  <script src="script.js" charset="utf-8"></script>
+  <script defer src="play.js" charset="utf-8"></script>
+  <script defer src="script.js" charset="utf-8"></script>
 </head>
+
 <body>
-  <form id="er-params">
-    <h3>Euclidean Rhythm Params</h3>
-    <label for="pulses">Pulses</label>
-    <label for="steps">Steps</label>
-    <input id="pulses" autofocus name='pulses' type="number" placeholder="Pulses">
-    <input id="steps" name='steps' type="number" placeholder="Steps">
-    <input style="display: none;" type="submit"></input>
-  </form>
-  <button type="button" id="clear">Clear</button>
+
   <header>
+    <h1> ◬ </h1>
+    <h3> Euclidean 👁👁 Rhythms </h3>
   </header>
-  <main></main>
+
+  <section>
+    <label for="pulses">
+      Pulses
+      <input id="pulses" autofocus name='pulses' type="number" placeholder="Pulses" value="4">
+    </label>
+
+    <label for="steps">
+      Steps
+      <input id="steps" name='steps' type="number" placeholder="Steps" value="16">
+    </label>
+
+    <label for="pixels">
+      pixels
+      <input id="pixels" name='pixels' type="number" placeholder="pixels" value="48">
+    </label>
+  </section>
+
+  <main>
+
+  </main>
+
 </body>
+
 </html>

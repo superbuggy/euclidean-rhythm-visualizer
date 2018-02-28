@@ -1,47 +1,58 @@
-var pulsesInput, stepsInput, form, clearButton, main;
-window.onload = function(){
-  pulsesInput = document.getElementById('pulses')
-  stepsInput = document.getElementById('steps')
-  form = document.getElementById('er-params')
-  clearButton = document.getElementById('clear')
-  main = document.getElementsByTagName("main")[0]
-  form.addEventListener("submit", evt => drawDivs(evt))
-  clearButton.addEventListener("click", clearPattern)
+const main = document.querySelector('main')
+const pulsesInput = document.getElementById('pulses')
+const stepsInput = document.getElementById('steps')
+const pixelsInput = document.getElementById('pixels')
+
+stepsInput.addEventListener('input', handleInput)
+pulsesInput.addEventListener('input', handleInput)
+pixelsInput.addEventListener('input', event => generateStyleSheet(event.target.value))
+
+generateStyleSheet()
+drawDivs()
+
+function generateStyleSheet (pixels = 48) {
+  const styleTag = document.querySelector('style')
+  if (styleTag) document.head.removeChild(styleTag)
+  const sheet = document.createElement('style')
+  sheet.innerHTML = makeRule(pixels)
+  document.head.appendChild(sheet)
 }
 
-function drawDivs(evt){
-  evt.preventDefault();
-  let pulses = pulsesInput.value;
-  let steps = stepsInput.value;
-  let pattern = generatePattern(pulses, steps);
-  for (var i = 0; i < pattern.length; i++) {
-    let div = document.createElement('div');
-    div.className="beat";
-    if (pattern[i]){
-      div.className+=" on";
-    }else{
-      div.className+=" off";
-    }
-    main.appendChild(div);
+function makeRule (pixels) {
+  return `
+  .beat {
+    min-width: ${pixels}px;
+    max-width: ${pixels}px;
+    min-height: ${pixels}px;
+    max-height: ${pixels}px;
+    box-sizing: border-box;
+    border: 1px solid rgb(174, 164, 109);
   }
-  playSequence();
+  `
 }
 
-function getSequence(){
-  let sequence = [];
-  let els = document.getElementsByClassName('beat');
-  console.log(els);
-  for (var i = 0; i < els.length; i++) {
-    if (els[i].classList.contains("on")){
-      sequence.push(1)
-    } else {
-      sequence.push(0)
-    }
-  }
-  return sequence;
+function handleInput (event) {
+  console.log(pixelsInput.value.constructor, stepsInput.value.constructor)
+  if (parseInt(pixelsInput.value) < 10) pixelsInput.value = 10
+  if (parseInt(stepsInput.value) < parseInt(pulsesInput.value)) stepsInput.value = pulsesInput.value
+  drawDivs(event)
 }
 
-function clearPattern(){
-  main.innerHTML=""
-  Tone.Transport.stop()
+function drawDivs (event) {
+  main.innerHTML = ''
+  let pulses = pulsesInput.value
+  let steps = stepsInput.value
+  let pattern = generatePattern(pulses, steps)
+  pattern.forEach(beat => {
+    let div = document.createElement('div')
+    div.className = beat ? 'on beat' : 'off beat'
+    main.appendChild(div)
+  })
+  playSequence()
+}
+
+function getSequence () {
+  const beats = document.getElementsByClassName('beat')
+  let pattern = [...beats].map(beat => beat.classList.contains('on') ? 1 : 0)
+  return pattern
 }
