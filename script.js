@@ -51,8 +51,30 @@ function drawDivs (event) {
   playSequence()
 }
 
-function getSequence () {
+function getSequenceFromDOM () {
   const beats = document.getElementsByClassName('beat')
-  let pattern = [...beats].map(beat => beat.classList.contains('on') ? 1 : 0)
-  return pattern
+  let sequence = [...beats].map(beat => beat.classList.contains('on') ? 1 : 0)
+  return sequence
+}
+
+function playSequence () {
+  let sequence = getSequenceFromDOM()
+  let noiseSynth = new Tone.NoiseSynth().toMaster()
+
+  var seq = new Tone.Sequence(function (time, note) {
+    // console.log(note, time)
+    if (note) {
+      noiseSynth.triggerAttackRelease('8n', time)
+    }
+  }, sequence, '8n')
+  console.log(sequence)
+  console.log(Tone.Transport)
+  console.log(Tone.hackyEventId)
+  Tone.hackyEventId = Tone.Transport.schedule(function (time) {
+      // invoked when the Transport starts
+    Tone.Transport.clear(Tone.hackyEventId)
+    seq.stop()
+    seq.start(0)
+  }, 0)
+  Tone.Transport.start()
 }
