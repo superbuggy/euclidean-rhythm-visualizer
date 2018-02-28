@@ -28,15 +28,29 @@
       <input id="steps" name='steps' type="number" placeholder="Steps" value="16">
     </label>
 
+    <label for="bpm">
+      bpm
+      <input name="bpm" type="range" min="60" max="240" value="120">
+    </label>
+
     <label for="pixels">
       pixels
       <input id="pixels" name='pixels' type="number" placeholder="pixels" value="48">
     </label>
   </section>
+  
+  <section class="transport">
+    <label for="volume">
+      Volume
+      <input name="volume" type="range" min="-60" max="12" value="0">
+    </label>
 
-  <main>
-    <!-- <div class="beat on active"></div> -->
-  </main>
+    <button id="playButton">▶️</button>
+
+    <button id="stopButton">⏹</button>
+  </section>
+
+  <main></main>
 
 </body>
 

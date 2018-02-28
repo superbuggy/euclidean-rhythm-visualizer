@@ -2,12 +2,27 @@ const main = document.querySelector('main')
 const pulsesInput = document.getElementById('pulses')
 const stepsInput = document.getElementById('steps')
 const pixelsInput = document.getElementById('pixels')
+const playButton = document.getElementById('playButton') // think globally, act locally
+const stopButton = document.getElementById('stopButton') // think globally, act locally
+const bpmSlider = document.querySelector('input[name="bpm"]')
+const volumeSlider = document.querySelector('input[name="volume"]')
 
+Tone.Master.volume.value = -10
 let currentSequence
 
 stepsInput.addEventListener('input', handleInput)
 pulsesInput.addEventListener('input', handleInput)
 pixelsInput.addEventListener('input', event => generateStyleSheet(event.target.value))
+playButton.addEventListener('click', e => playSequence())
+stopButton.addEventListener('click', e => stopSequence())
+volumeSlider.addEventListener('input', e => {
+  Tone.Master.volume.value = parseInt(e.target.value)
+})
+
+bpmSlider.addEventListener('input', e => {
+  console.log(e.target.value, Tone.Transport.bpm)
+  Tone.Transport.bpm.value = e.target.value
+})
 
 generateStyleSheet()
 drawDivs()
@@ -60,7 +75,6 @@ function getSequenceFromDOM () {
 
 function playSequence () {
   console.log('play')
-  Tone.Transport.stop()
   if (currentSequence) {
     currentSequence.stop()
     currentSequence.dispose()
@@ -78,16 +92,17 @@ function playSequence () {
       noiseSynth.triggerAttackRelease('8n', time)
     }
   }, pattern, '8n')
-  console.log(currentSequence.length)
   currentSequence.start(0)
   Tone.Transport.start()
 }
 
+function stopSequence () {
+  Tone.Transport.stop()
+}
+
 function lightUp (index) {
   const beats = document.querySelectorAll('.beat')
-  console.log(beats[index].classList.value)
   const prev = index - 1 === -1 ? beats.length - 1 : index - 1
   beats[index].classList.add('active')
   beats[prev].classList.remove('active')
-  console.log(beats[index].classList.value)
 }
