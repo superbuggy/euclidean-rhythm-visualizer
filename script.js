@@ -71,13 +71,23 @@ function playSequence () {
   let pattern = generatePattern(pulses, steps)
 
   currentSequence = new Tone.Sequence(function (time, note) {
+    const index = (currentSequence.progress * currentSequence.length)
+    lightUp(index)
     let noiseSynth = new Tone.NoiseSynth().toMaster()
-    console.log(note)
     if (note) {
       noiseSynth.triggerAttackRelease('8n', time)
     }
   }, pattern, '8n')
-
+  console.log(currentSequence.length)
   currentSequence.start(0)
   Tone.Transport.start()
+}
+
+function lightUp (index) {
+  const beats = document.querySelectorAll('.beat')
+  console.log(beats[index].classList.value)
+  const prev = index - 1 === -1 ? beats.length - 1 : index - 1
+  beats[index].classList.add('active')
+  beats[prev].classList.remove('active')
+  console.log(beats[index].classList.value)
 }
