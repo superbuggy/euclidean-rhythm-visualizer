@@ -11,48 +11,51 @@
 </head>
 
 <body>
+  <div class="triangle"></div>
+  <main>
+    <header>
+      <h1> ◬ </h1>
+      <h3 class="eyes">👁&nbsp;👁</h3>
+      <h3> Euclidean Rhythms </h3>
+    </header>
 
-  <header>
-    <h1> ◬ </h1>
-    <h3> Euclidean 👁👁 Rhythms </h3>
-  </header>
 
-  <section class="controls">
-    <label for="pulses">
-      Pulses
-      <input id="pulses" autofocus name='pulses' type="number" placeholder="Pulses" value="4">
-    </label>
+    <div class="rhythm-display"></div>
 
-    <label for="steps">
-      Steps
-      <input id="steps" name='steps' type="number" placeholder="Steps" value="16">
-    </label>
+    <section class="controls">
+      <label for="pulses">
+        Pulses
+        <input id="pulses" autofocus name='pulses' type="number" placeholder="Pulses" value="4">
+      </label>
 
-    <label for="bpm">
-      <span>120</span> bpm
-      <input name="bpm" type="range" min="60" max="240" value="120">
-    </label>
+      <label for="steps">
+        Steps
+        <input id="steps" name='steps' type="number" placeholder="Steps" value="16">
+      </label>
 
-    <label for="pixels">
-      pixels
-      <input id="pixels" name='pixels' type="number" placeholder="pixels" value="48">
-    </label>
-  </section>
-  
-  <section class="transport">
+      <section class="transport">
+        <button id="playButton">▶️</button>
+        <button id="stopButton">⏹</button>
+      </section>
 
-    <button id="playButton">▶️</button>
-    <button id="stopButton">⏹</button>
+      <label for="bpm">
+        <span>120</span> bpm
+        <input name="bpm" type="range" min="60" max="240" value="120">
+      </label>
 
-    <label for="volume">
-      Volume
-      <input name="volume" type="range" min="-60" max="12" value="0">
-    </label>
+      <label for="volume">
+        <span>🔊</span>
+        <input name="volume" type="range" min="-60" max="12" value="0">
+      </label>
 
-  </section>
-
-  <main></main>
-
+    </section>
+    <section class="controls">
+      <label for="pixels">
+        pixels
+        <input id="pixels" name='pixels' type="number" placeholder="pixels" value="48">
+      </label>
+    </section>
+  </main>
 </body>
 
 </html>

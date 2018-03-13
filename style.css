@@ -1,38 +1,89 @@
 @import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+
 body {
   margin: 0;
   padding: 0;
+  background-color: rgba(250, 230, 0, 0.3);
 }
-main, section, header {
+
+.triangle {
+  position: absolute;
+  z-index: -1;
+  width: 0; 
+  height: 0; 
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-bottom: 100vh solid rgba(249, 228, 0, 0.5);
+}
+
+.rhythm-display, section, header {
   margin: auto;
   width: 70%;
   font-family: Nova Mono;
   font-size: 4vmin;
 }
-h1 {
+
+h1, h3 {
+  color: rgb(94, 85, 37);
+  padding: 0;
+  margin: 0;
   font-family: Nova Mono;
-  font-size: 16vmin;
   text-align: center;
+}
+
+h1 {
+  font-size: 16vmin;
+}
+
+h1:hover {
+  color: rgba(249, 228, 0, 0.3);
+  animation: illuminati-chaos 6s infinite;
 }
 
 h3 {
   font-size: 6vmin;
-  font-family: Nova Mono;
 }
 
-main {
+h3.eyes:hover {
+  animation: spooky-eyeshadow 2s infinite both;
+}
+
+.rhythm-display {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1em;
 }
 
 button {
   font-size: 6vmin;
+  border: none;
+  background-color: rgba(250, 230, 0, 0.5);
 }
 
 input {
   font-family: Nova Mono;
   font-size: 4vmin;
   max-width: 3em;
+  background-color: rgba(250, 230, 0, 0.5);
+  border: none;
+  color: rgb(94, 85, 37);
+  text-align: center;
+}
+
+label {
+  color: rgb(94, 85, 37);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(250, 230, 0, 0.5);
+}
+
+.transport {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(250, 230, 0, 0.5);
 }
 
 .on {
@@ -43,8 +94,47 @@ input {
   background-color: rgb(131, 121, 61);
 }
 
+.controls {
+  padding: .5em;
+  display: flex;
+  justify-content: space-around;
+}
+
 div.active {
   box-sizing: border-box;
   border: 10px solid rgba(255, 0, 0, 0.379);
-  /* background:violet; */
+}
+
+@keyframes illuminati-chaos {
+  0% {
+    text-shadow: 0em -.01em 0em rgb(94, 85, 37),
+                -.01em  .01em 0em rgb(94, 85, 37),
+                 .01em  .01em 0em rgb(94, 85, 37);
+  }
+  50% {
+    text-shadow: 0em   -.21em 0em rgba(250, 230, 0, 0.5),
+                -.3em  .91em 0em rgb(94, 85, 37),
+                 .3em  .91em 0em rgb(94, 85, 37);
+  } 
+  100% {
+    color: rgb(94, 85, 37);
+    text-shadow: 0em -.21em 0em rgba(250, 230, 0, 0.5),
+                -2.1em  1.4em 0em rgba(250, 230, 0, 0.5),
+                 2.1em  1.4em 0em rgba(250, 230, 0, 0.5);
+  }
+}
+
+@keyframes spooky-eyeshadow {
+  0% {
+    text-shadow: -.01em -.01em 0em rgb(94, 85, 37),
+                  .01em -.01em 0em rgb(94, 85, 37),
+                 -.01em  .01em 0em rgb(94, 85, 37),
+                  .01em  .01em 0em rgb(94, 85, 37);
+  }
+  100% {
+    text-shadow: -.05em -.05em 0em rgb(94, 85, 37),
+                  .05em -.05em 0em rgb(94, 85, 37),
+                 -.05em  .05em 0em rgb(94, 85, 37),
+                  .05em  .05em 0em rgb(94, 85, 37);
+  } 
 }
