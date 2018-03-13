@@ -1,6 +1,17 @@
 // Bjorklund algorithm from https://gist.github.com/withakay/1286731
 
-function generatePattern (pulses, steps) {
+/*
+An implementation of the Bjorklund algorithm in JavaScript
+Inspired by the paper 'The Euclidean Algorithm Generates Traditional Musical Rhythms'
+by Godfried Toussaint
+
+This is a port of the original algorithm by E. Bjorklund which I
+found in the paper 'The Theory of Rep-Rate Pattern Generation in the SNS Timing Systems' by
+E. Bjorklund.
+Jack Rutherford
+*/
+
+function generatePattern (pulses, steps) { // renamed from the original
   steps = Math.round(steps)
   pulses = Math.round(pulses)
 
