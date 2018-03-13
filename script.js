@@ -1,4 +1,4 @@
-const main = document.querySelector('main')
+const rhythmDisplay = document.querySelector('.rhythm-display')
 const pulsesInput = document.getElementById('pulses')
 const stepsInput = document.getElementById('steps')
 const pixelsInput = document.getElementById('pixels')
@@ -15,12 +15,21 @@ pulsesInput.addEventListener('input', handleInput)
 pixelsInput.addEventListener('input', event => generateStyleSheet(event.target.value))
 playButton.addEventListener('click', e => playSequence())
 stopButton.addEventListener('click', e => stopSequence())
+
 volumeSlider.addEventListener('input', e => {
-  Tone.Master.volume.value = parseInt(e.target.value)
+  const volumeEmojis = ['🔇', '🔈', '🔉', '🔊'].reverse()
+  const RANGE = e.target.max - e.target.min
+  const decibels = parseInt(e.target.value)
+  const indexesBetweenEmojis = RANGE / volumeEmojis.length
+  const emojiIndex = Math.floor((-decibels + 12) / indexesBetweenEmojis)
+  console.log(emojiIndex, RANGE)
+  document.querySelector('label[for="volume"] > span').innerHTML = volumeEmojis[emojiIndex] || volumeEmojis[3]
+  Tone.Master.volume.value = decibels
 })
 
 bpmSlider.addEventListener('input', e => {
-  document.querySelector('label[for="bpm"] > span').innerHTML = e.target.value
+  const displayedBpm = e.target.value.length === 3 ? e.target.value : `&nbsp;${e.target.value}`
+  document.querySelector('label[for="bpm"] > span').innerHTML = displayedBpm
   Tone.Transport.bpm.value = e.target.value
 })
 
@@ -61,14 +70,14 @@ function handleInput (event) {
 }
 
 function drawDivs () {
-  main.innerHTML = ''
+  rhythmDisplay.innerHTML = ''
   let pulses = pulsesInput.value
   let steps = stepsInput.value
   let pattern = generatePattern(pulses, steps)
   pattern.forEach(beat => {
     let div = document.createElement('div')
     div.className = beat ? 'on beat' : 'off beat'
-    main.appendChild(div)
+    rhythmDisplay.appendChild(div)
   })
 }
 
