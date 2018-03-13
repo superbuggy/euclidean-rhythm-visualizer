@@ -2,7 +2,7 @@
 
 ## Background
 
-Through my habitual acquiring of weird synthesizer modules, I stumbled upon a couple modules with functions to generate rhythms and sequences of notes that were Euclidean. I, like most people tend to associate Euclid, the ancient Greek thinker and mathematician, with geometry, so I found the association with geometry and music really intriguing.
+Through my habitual acquiring of weird synthesizer modules, I stumbled upon a couple modules with functions to generate rhythmic patterns that were called Euclidean sequences or rhythms. I, like most people tend to associate Euclid, the ancient Greek thinker and mathematician, with geometry, so I found the association with geometry and music really intriguing.
 
 I had seen connections drawn between geometry and music in the context of talking about systems of tuning, but never with rhythm. I furtively wondered if there might be a different way to think about or experience rhythms in a visual context, since there was an apparent relationship between music and geometry.
 
