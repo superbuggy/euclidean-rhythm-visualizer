@@ -107,9 +107,7 @@ function generateToneSequence (pattern) {
     const index = parseInt(currentSequence.progress * currentSequence.length)
     lightUp(index)
     let noiseSynth = new Tone.NoiseSynth().toMaster()
-    if (note) {
-      noiseSynth.triggerAttackRelease('8n', time)
-    }
+    if (note) noiseSynth.triggerAttackRelease('8n', time)
   }, pattern, '8n')
 }
 
