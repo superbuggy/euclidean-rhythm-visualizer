@@ -54,7 +54,9 @@ It turns out that certain distributions of pulses over steps actually generate r
 
 ### Interesting Combinations of Pulses and Steps
 
-As some of the more mathematically inclined of you might've intuited, many interesting rhythms are produced by number that share no common factors other than 1. Two numbers related in this way are said to be **relatively prime**. The 2nd example of 3 pulses over 8 steps is one such example.
+As some of the more mathematically inclined of you might've intuited, many interesting rhythms are produced by number that share no common factors other than 1. Two numbers related in this way are said to be **relatively prime**. 
+
+The 2nd example of 3 pulses over 8 steps is one such example. Let's look at some others!
 
 #### 2 steps over 5 pulses
 
@@ -67,6 +69,8 @@ Spreading 3 steps over 4 pulses creates "*pattern used in the Baiao´ rhythm of 
 If you shift the pattern of active pulses over 2 steps, the resulting pattern "*is also the amphibrach rhythm (short-long-short) traditionally associated with prosody [38]*" (Toussaint, 7).
 
 Many of these sequences can similarly shifted over a varying number of places to produce other common rhythmic patterns.
+
+In the paper linked below, there are numerous examples of other interesting combinations of pulses distributed over steps.
 
 ## Further Reading
 
