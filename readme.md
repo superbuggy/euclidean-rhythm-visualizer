@@ -41,9 +41,10 @@ The resulting sound is a regular, mechanical ticking that sounds like a metronom
 ### Example II: 3 pulses over 8 steps
 
 ![X--X--X-](./images/euclid2-8.jpg)
+
 Since clock-like isn't particularly interesting on a rhythmic level, we can vary the number of pulses we distribute over the 8 steps.
 
-> "In Cuba it goes by the name of the tresillo and in the USA is often called the Habanera rhythm used in hundreds of rockabilly songs during the 1950’s" (Toussaint, 4).
+> "*In Cuba it goes by the name of the tresillo and in the USA is often called the Habanera rhythm used in hundreds of rockabilly songs during the 1950’s*" (Toussaint, 4).
 
 ### Euclidean Rhythms in Musical Traditions Around the World
 
@@ -57,13 +58,13 @@ As some of the more mathematically inclined of you might've intuited, many inter
 
 #### 2 steps over 5 pulses
 
-This distribution produces "a rhythm found in Greece, Namibia, Rwanda and Central Africa [7]. It is the pattern of the N-geru and Yalli rhythms used in heroic ballads by the Tuareg nomadic people of the Sahara desert [135]" (Toussaint, 7).
+This distribution produces "*a rhythm found in Greece, Namibia, Rwanda and Central Africa [7]. It is the pattern of the N-geru and Yalli rhythms used in heroic ballads by the Tuareg nomadic people of the Sahara desert [135]*" (Toussaint, 7).
 
 #### 3 steps over 4 pulses
 
-Spreading 3 steps over 4 pulses creates "pattern used in the Baiao´ rhythm of Brazil [130], a drum rhythm in South Indian classical music [95], as well as the polos rhythm of Bali [90]. It is also the anapest rhythm (shortshort-long) from ars antiqua [129], traditionally associated with prosody [38]..." (Toussaint, 7).
+Spreading 3 steps over 4 pulses creates "*pattern used in the Baiao´ rhythm of Brazil [130], a drum rhythm in South Indian classical music [95], as well as the polos rhythm of Bali [90]. It is also the anapest rhythm (shortshort-long) from ars antiqua [129], traditionally associated with prosody [38]...*" (Toussaint, 7).
 
-If you shift the pattern of active pulses over 2 steps, the resulting pattern "is also the amphibrach rhythm (short-long-short) traditionally associated with prosody [38]" (Toussaint, 7).
+If you shift the pattern of active pulses over 2 steps, the resulting pattern "*is also the amphibrach rhythm (short-long-short) traditionally associated with prosody [38]*" (Toussaint, 7).
 
 Many of these sequences can similarly shifted over a varying number of places to produce other common rhythmic patterns.
 
