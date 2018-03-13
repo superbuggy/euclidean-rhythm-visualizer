@@ -113,11 +113,13 @@ function generateToneSequence (pattern) {
 
 function stopSequence () {
   Tone.Transport.stop()
+  const beats = [...document.querySelectorAll('.beat')]
+  beats.forEach(beat => beat.classList.remove('active'))
 }
 
 function lightUp (index) {
   const beats = document.querySelectorAll('.beat')
-  const prev = index - 1 === -1 ? beats.length - 1 : index - 1
+  const rotatedLastIndex = index - 1 === -1 ? beats.length - 1 : index - 1
   beats[index].classList.add('active')
-  beats[prev].classList.remove('active')
+  beats[rotatedLastIndex].classList.remove('active')
 }
