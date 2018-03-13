@@ -37,7 +37,7 @@ h1 {
 
 h1:hover {
   color: rgba(249, 228, 0, 0.3);
-  animation: illuminati-chaos 6s infinite;
+  animation: illuminati-chaos 6s infinite alternate;
 }
 
 h3 {
@@ -45,7 +45,7 @@ h3 {
 }
 
 h3.eyes:hover {
-  animation: spooky-eyeshadow 2s infinite both;
+  animation: spooky-eyeshadow 2s infinite alternate;
 }
 
 .rhythm-display {
@@ -119,8 +119,8 @@ div.active {
   100% {
     color: rgb(94, 85, 37);
     text-shadow: 0em -.21em 0em rgba(250, 230, 0, 0.5),
-                -2.1em  1.4em 0em rgba(250, 230, 0, 0.5),
-                 2.1em  1.4em 0em rgba(250, 230, 0, 0.5);
+                -2.1em  1.4em 0em rgba(250, 230, 0, 0),
+                 2.1em  1.4em 0em rgba(250, 230, 0, 0);
   }
 }
 
