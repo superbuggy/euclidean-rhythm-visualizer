@@ -58,11 +58,11 @@ As some of the more mathematically inclined of you might've intuited, many inter
 
 The 2nd example of 3 pulses over 8 steps is one such example. Let's look at some others!
 
-#### 2 steps over 5 pulses
+#### 2 pulses over 5 steps
 
 This distribution produces "*a rhythm found in Greece, Namibia, Rwanda and Central Africa [7]. It is the pattern of the N-geru and Yalli rhythms used in heroic ballads by the Tuareg nomadic people of the Sahara desert [135]*" (Toussaint, 7).
 
-#### 3 steps over 4 pulses
+#### 3 pulses over 4 steps
 
 Spreading 3 steps over 4 pulses creates "*pattern used in the Baiao´ rhythm of Brazil [130], a drum rhythm in South Indian classical music [95], as well as the polos rhythm of Bali [90]. It is also the anapest rhythm (shortshort-long) from ars antiqua [129], traditionally associated with prosody [38]...*" (Toussaint, 7).
 
