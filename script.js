@@ -13,17 +13,16 @@ let currentSequence
 stepsInput.addEventListener('input', handleInput)
 pulsesInput.addEventListener('input', handleInput)
 pixelsInput.addEventListener('input', event => generateStyleSheet(event.target.value))
-playButton.addEventListener('click', e => playSequence())
-stopButton.addEventListener('click', e => stopSequence())
+playButton.addEventListener('click', _ => playSequence())
+stopButton.addEventListener('click', _ => stopSequence())
 
-volumeSlider.addEventListener('input', e => {
+volumeSlider.addEventListener('input', event => {
   const volumeEmojis = ['🔇', '🔈', '🔉', '🔊'].reverse()
-  const RANGE = e.target.max - e.target.min
-  const decibels = parseInt(e.target.value)
+  const RANGE = event.target.max - event.target.min
+  const decibels = parseInt(event.target.value)
   const indexesBetweenEmojis = RANGE / volumeEmojis.length
   const emojiIndex = Math.floor((-decibels + 12) / indexesBetweenEmojis)
-  console.log(emojiIndex, RANGE)
-  document.querySelector('label[for="volume"] > span').innerHTML = volumeEmojis[emojiIndex] || volumeEmojis[3]
+  document.querySelector('label[for="volume"] > span').innerText = volumeEmojis[emojiIndex] || volumeEmojis[3]
   Tone.Master.volume.value = decibels
 })
 
@@ -93,11 +92,8 @@ function playSequence () {
     currentSequence.dispose()
   }
 
-  let pulses = pulsesInput.value
-  let steps = stepsInput.value
-  let pattern = generatePattern(pulses, steps)
-
-  generateToneSequence(pattern)
+  const [pulses, steps] = [pulsesInput.value, stepsInput.value]
+  generateToneSequence(generatePattern(pulses, steps))
   currentSequence.start(0)
   Tone.Transport.start()
 }
@@ -106,8 +102,8 @@ function generateToneSequence (pattern) {
   currentSequence = new Tone.Sequence(function (time, note) {
     const index = parseInt(currentSequence.progress * currentSequence.length)
     lightUp(index)
-    let noiseSynth = new Tone.NoiseSynth().toMaster()
-    if (note) noiseSynth.triggerAttackRelease('8n', time)
+    const kick = new Tone.MembraneSynth().toMaster()
+    if (note) kick.triggerAttackRelease('8n', time)
   }, pattern, '8n')
 }
 
