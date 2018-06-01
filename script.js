@@ -22,7 +22,6 @@ volumeSlider.addEventListener('input', e => {
   const decibels = parseInt(e.target.value)
   const indexesBetweenEmojis = RANGE / volumeEmojis.length
   const emojiIndex = Math.floor((-decibels + 12) / indexesBetweenEmojis)
-  console.log(emojiIndex, RANGE)
   document.querySelector('label[for="volume"] > span').innerHTML = volumeEmojis[emojiIndex] || volumeEmojis[3]
   Tone.Master.volume.value = decibels
 })
@@ -52,17 +51,18 @@ function makeRule (pixels = 48) {
     min-height: ${pixels}px;
     max-height: ${pixels}px;
     box-sizing: border-box;
-    border: 1px solid rgb(174, 164, 109);
+    border-radius: ${pixels / 4}px;
+    border: ${Math.ceil(pixels / 12)}px solid rgba(216, 173, 1, .2);
   }
   `
 }
 
 function handleInput (event) {
   const MAX = 512
-  const MIN = 10
-  if (parseInt(pixelsInput.value) < MIN) pixelsInput.value = MIN
-  if (parseInt(stepsInput.value) > MAX) stepsInput.value = MAX
+  const AT_LEAST_PIXELS = 10
+  if (parseInt(pixelsInput.value) < AT_LEAST_PIXELS) pixelsInput.value = AT_LEAST_PIXELS
   if (parseInt(pulsesInput.value) > MAX) pulsesInput.value = MAX
+  if (parseInt(stepsInput.value) > MAX) stepsInput.value = MAX
   if (parseInt(stepsInput.value) < 1) stepsInput.value = 1
   if (parseInt(pulsesInput.value) < 1) pulsesInput.value = 1
   playSequence()
@@ -74,6 +74,9 @@ function drawDivs () {
   let pulses = pulsesInput.value
   let steps = stepsInput.value
   let pattern = generatePattern(pulses, steps)
+  let triangle = document.createElement('div')
+  triangle.className = 'rhythm-display-triangle'
+  rhythmDisplay.appendChild(triangle)
   pattern.forEach(beat => {
     let div = document.createElement('div')
     div.className = beat ? 'on beat' : 'off beat'
